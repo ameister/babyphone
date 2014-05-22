@@ -11,4 +11,7 @@
 @interface PhoneNumberRepository : NSObject
 @property (strong) NSString *phoneNumber;
 
+- (void)saveNumber;
+- (void)loadNumber;
+
 @end

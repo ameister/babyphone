@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "PhoneNumberRepository.h"
 
 @interface babyphoneTests : XCTestCase
 
@@ -28,7 +29,12 @@
 
 - (void)testExample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    PhoneNumberRepository *repo = [[PhoneNumberRepository alloc] init];
+    repo.phoneNumber = @"0796652606";
+    [repo saveNumber];
+    repo.phoneNumber = nil;
+    [repo loadNumber];
+    XCTAssertEqualObjects(@"0796652606", repo.phoneNumber);
 }
 
 @end

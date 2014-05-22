@@ -14,14 +14,15 @@
 
 #define phoneNumberKey @"PhoneNumber"
 
-
-- (void) saveWithCoder:(NSCoder *)encoder {
-    [encoder encodeObject:_phoneNumber forKey:phoneNumberKey];
+- (void)saveNumber
+{
+    NSUserDefaults *perfs = [NSUserDefaults standardUserDefaults];
+    [perfs setObject:_phoneNumber forKey:phoneNumberKey];
 }
 
-- (id)loadWithCoder:(NSCoder *)decoder {
-    NSString *phoneNumber = [decoder decodeObjectForKey:phoneNumberKey];
-    return phoneNumber;
+- (void)loadNumber
+{
+    NSUserDefaults *perfs = [NSUserDefaults standardUserDefaults];
+    _phoneNumber = [perfs stringForKey:phoneNumberKey];
 }
-
 @end

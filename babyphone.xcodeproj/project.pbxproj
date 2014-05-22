@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D89DAA37192E246400288B67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89DAA35192E246400288B67 /* Main.storyboard */; };
 		D89DAA3A192E2BDB00288B67 /* PhoneNumberRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = D89DAA39192E2BDB00288B67 /* PhoneNumberRepository.m */; };
+		D89DAA3D192E868D00288B67 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D89DAA3C192E868D00288B67 /* SettingsViewController.m */; };
 		D89E0CDC192E0FA8008D36CC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D89E0CDB192E0FA8008D36CC /* MainViewController.m */; };
 		D8E9000A192DD9F200A07E07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E90009192DD9F200A07E07 /* Foundation.framework */; };
 		D8E9000C192DD9F200A07E07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E9000B192DD9F200A07E07 /* CoreGraphics.framework */; };
@@ -38,6 +39,8 @@
 		D89DAA36192E246400288B67 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D89DAA38192E2BDB00288B67 /* PhoneNumberRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberRepository.h; sourceTree = "<group>"; };
 		D89DAA39192E2BDB00288B67 /* PhoneNumberRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberRepository.m; sourceTree = "<group>"; };
+		D89DAA3B192E868D00288B67 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		D89DAA3C192E868D00288B67 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		D89E0CDA192E0FA8008D36CC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		D89E0CDB192E0FA8008D36CC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		D8E90006192DD9F200A07E07 /* babyphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = babyphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +116,8 @@
 				D89E0CDB192E0FA8008D36CC /* MainViewController.m */,
 				D89DAA38192E2BDB00288B67 /* PhoneNumberRepository.h */,
 				D89DAA39192E2BDB00288B67 /* PhoneNumberRepository.m */,
+				D89DAA3B192E868D00288B67 /* SettingsViewController.h */,
+				D89DAA3C192E868D00288B67 /* SettingsViewController.m */,
 			);
 			path = babyphone;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 			files = (
 				D8E9001A192DD9F200A07E07 /* BabyAppDelegate.m in Sources */,
 				D89DAA3A192E2BDB00288B67 /* PhoneNumberRepository.m in Sources */,
+				D89DAA3D192E868D00288B67 /* SettingsViewController.m in Sources */,
 				D89E0CDC192E0FA8008D36CC /* MainViewController.m in Sources */,
 				D8E90016192DD9F200A07E07 /* main.m in Sources */,
 			);

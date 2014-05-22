@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "PhoneNumberRepository.h"
 
 @interface MainViewController ()
 
@@ -16,7 +17,10 @@
 @synthesize outputLabel;
 
 - (IBAction)start:(id)sender {
-    self.outputLabel.text = @"Button pressed";
+    
+    PhoneNumberRepository *repo = [[PhoneNumberRepository alloc] init];
+    [repo loadNumber];
+    self.outputLabel.text = repo.phoneNumber;
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0796652606"]];
 }
 @end
