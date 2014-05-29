@@ -39,7 +39,6 @@
                                 </state>
                                 <connections>
                                     <action selector="start:" destination="3dT-lI-jKW" eventType="touchUpInside" id="fGG-ee-CwZ"/>
-                                    <action selector="start:" destination="3dT-lI-jKW" eventType="touchDown" id="tSL-gR-Zh7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lU-1P-grW">

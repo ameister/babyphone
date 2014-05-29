@@ -8,10 +8,7 @@
 
 #import "MainViewController.h"
 #import "PhoneNumberRepository.h"
-
-@interface MainViewController ()
-
-@end
+#import "IosAudioController.h"
 
 @implementation MainViewController
 @synthesize outputLabel;
@@ -22,5 +19,6 @@
     [repo loadNumber];
     self.outputLabel.text = repo.phoneNumber;
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0796652606"]];
+    [iosAudio start];
 }
 @end

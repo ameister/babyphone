@@ -27,7 +27,7 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)phoneNumber_save_numberCanBeLoaded
 {
     PhoneNumberRepository *repo = [[PhoneNumberRepository alloc] init];
     repo.phoneNumber = @"0796652606";

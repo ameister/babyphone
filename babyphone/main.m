@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 #import "BabyAppDelegate.h"
+#import "IosAudioController.h"
 
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
+        iosAudio = [[IosAudioController alloc] init];
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([BabyAppDelegate class]));
     }
 }

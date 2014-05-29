@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D881772419377933005D4C18 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D881772219377933005D4C18 /* AudioToolbox.framework */; };
+		D881772719377952005D4C18 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D881772619377952005D4C18 /* CoreAudio.framework */; };
+		D881772A19378C92005D4C18 /* IosAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = D881772919378C92005D4C18 /* IosAudioController.m */; };
 		D89DAA37192E246400288B67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D89DAA35192E246400288B67 /* Main.storyboard */; };
 		D89DAA3A192E2BDB00288B67 /* PhoneNumberRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = D89DAA39192E2BDB00288B67 /* PhoneNumberRepository.m */; };
 		D89DAA3D192E868D00288B67 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D89DAA3C192E868D00288B67 /* SettingsViewController.m */; };
@@ -36,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D881772219377933005D4C18 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D881772619377952005D4C18 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		D881772819378C92005D4C18 /* IosAudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IosAudioController.h; sourceTree = "<group>"; };
+		D881772919378C92005D4C18 /* IosAudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IosAudioController.m; sourceTree = "<group>"; };
 		D89DAA36192E246400288B67 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D89DAA38192E2BDB00288B67 /* PhoneNumberRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberRepository.h; sourceTree = "<group>"; };
 		D89DAA39192E2BDB00288B67 /* PhoneNumberRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberRepository.m; sourceTree = "<group>"; };
@@ -66,6 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D881772719377952005D4C18 /* CoreAudio.framework in Frameworks */,
+				D881772419377933005D4C18 /* AudioToolbox.framework in Frameworks */,
 				D8E9000C192DD9F200A07E07 /* CoreGraphics.framework in Frameworks */,
 				D8E9000E192DD9F200A07E07 /* UIKit.framework in Frameworks */,
 				D8E9000A192DD9F200A07E07 /* Foundation.framework in Frameworks */,
@@ -97,6 +106,8 @@
 		D8E90008192DD9F200A07E07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D881772619377952005D4C18 /* CoreAudio.framework */,
+				D881772219377933005D4C18 /* AudioToolbox.framework */,
 				D8E90009192DD9F200A07E07 /* Foundation.framework */,
 				D8E9000B192DD9F200A07E07 /* CoreGraphics.framework */,
 				D8E9000D192DD9F200A07E07 /* UIKit.framework */,
@@ -108,6 +119,8 @@
 		D8E9000F192DD9F200A07E07 /* babyphone */ = {
 			isa = PBXGroup;
 			children = (
+				D881772819378C92005D4C18 /* IosAudioController.h */,
+				D881772919378C92005D4C18 /* IosAudioController.m */,
 				D8E90018192DD9F200A07E07 /* BabyAppDelegate.h */,
 				D8E90019192DD9F200A07E07 /* BabyAppDelegate.m */,
 				D8E9001B192DD9F200A07E07 /* Images.xcassets */,
@@ -261,6 +274,7 @@
 			files = (
 				D8E9001A192DD9F200A07E07 /* BabyAppDelegate.m in Sources */,
 				D89DAA3A192E2BDB00288B67 /* PhoneNumberRepository.m in Sources */,
+				D881772A19378C92005D4C18 /* IosAudioController.m in Sources */,
 				D89DAA3D192E868D00288B67 /* SettingsViewController.m in Sources */,
 				D89E0CDC192E0FA8008D36CC /* MainViewController.m in Sources */,
 				D8E90016192DD9F200A07E07 /* main.m in Sources */,
