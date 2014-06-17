@@ -12,13 +12,29 @@
 
 @implementation MainViewController
 @synthesize outputLabel;
+@synthesize phoneNumberField;
+@synthesize startButton;
+bool start = YES;
 
 - (IBAction)start:(id)sender {
+   
+    if (start) {
+        [iosAudio start];
+        [startButton setTitle:@"Stopp" forState:UIControlStateNormal];
+        PhoneNumberRepository *repo = [[PhoneNumberRepository alloc] init];
+        [repo loadNumber];
+        self.phoneNumberField.text = repo.phoneNumber;
+        phoneNumberField.text =  repo.phoneNumber;
+    } else {
+        [iosAudio stop];
+         [startButton setTitle:@"Start" forState:UIControlStateNormal];
+        phoneNumberField.text = nil;
+        
+    }
     
-    PhoneNumberRepository *repo = [[PhoneNumberRepository alloc] init];
-    [repo loadNumber];
-    self.outputLabel.text = repo.phoneNumber;
+    start = !start;
+    
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0796652606"]];
-    [iosAudio start];
+
 }
 @end

@@ -12,7 +12,17 @@
 @implementation SettingsViewController
 @synthesize phone;
 
-- (IBAction)save:(id)sender {
+- (void)viewWillAppear:(BOOL)animated {
+    PhoneNumberRepository *repo = [[PhoneNumberRepository alloc] init];
+    [repo loadNumber];
+    self.phone.text = repo.phoneNumber;
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [self save];
+}
+
+- (void) save {
     PhoneNumberRepository *repo = [[PhoneNumberRepository alloc] init];
     repo.phoneNumber = phone.text;
     [repo saveNumber];

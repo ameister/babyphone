@@ -12,6 +12,4 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *phone;
 
-- (IBAction)save:(id)sender;
-
 @end

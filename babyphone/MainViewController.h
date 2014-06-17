@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface MainViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumberField;
 @property (weak, nonatomic) IBOutlet UILabel *outputLabel;
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+
+
 - (IBAction)start:(id)sender;
 
 @end

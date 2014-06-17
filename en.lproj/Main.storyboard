@@ -16,45 +16,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Rt1-rc-97d">
-                                <rect key="frame" x="96" y="503" width="129" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="Lw9-9s-PHx"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Phone"/>
-                                    <segment title="Settings"/>
-                                </segments>
-                            </segmentedControl>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7R-9K-hEp">
-                                <rect key="frame" x="108" y="269" width="104" height="30"/>
+                                <rect key="frame" x="91" y="223" width="139" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="v9D-7l-aSr"/>
-                                    <constraint firstAttribute="width" constant="104" id="xQ6-UN-Poa"/>
-                                </constraints>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Start">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="start:" destination="3dT-lI-jKW" eventType="touchUpInside" id="fGG-ee-CwZ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lU-1P-grW">
-                                <rect key="frame" x="137" y="349" width="47" height="27"/>
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anruf auf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lU-1P-grW">
+                                <rect key="frame" x="106" y="335" width="109" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="109" id="4dZ-4H-SiV"/>
+                                    <constraint firstAttribute="height" constant="30" id="P1M-aj-amM"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ZD-x1-Pub">
+                                <rect key="frame" x="73" y="413" width="175" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="q7w-wh-MOl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="start:" destination="3dT-lI-jKW" eventType="editingDidEnd" id="nFt-qA-z2s"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Sf5-9E-IOB" firstAttribute="top" secondItem="Rt1-rc-97d" secondAttribute="bottom" constant="37" id="KOl-zc-FKh"/>
-                            <constraint firstItem="Rt1-rc-97d" firstAttribute="centerX" secondItem="pxT-ta-CNK" secondAttribute="centerX" id="a5Q-qH-6Ru"/>
-                            <constraint firstItem="T7R-9K-hEp" firstAttribute="centerY" secondItem="pxT-ta-CNK" secondAttribute="centerY" id="c8K-I0-hbt"/>
-                            <constraint firstItem="Rt1-rc-97d" firstAttribute="centerX" secondItem="T7R-9K-hEp" secondAttribute="centerX" id="p4P-DB-WjN"/>
+                            <constraint firstItem="T7R-9K-hEp" firstAttribute="leading" secondItem="pxT-ta-CNK" secondAttribute="leading" constant="91" id="C6G-lU-r9c"/>
+                            <constraint firstItem="6ZD-x1-Pub" firstAttribute="top" secondItem="8lU-1P-grW" secondAttribute="bottom" constant="48" id="Gg5-pd-rQH"/>
+                            <constraint firstItem="8lU-1P-grW" firstAttribute="centerX" secondItem="T7R-9K-hEp" secondAttribute="centerX" id="Ldb-1y-Te1"/>
+                            <constraint firstItem="T7R-9K-hEp" firstAttribute="top" secondItem="6Cm-Nc-nu6" secondAttribute="bottom" constant="159" id="Mbu-Bs-NwF"/>
+                            <constraint firstItem="8lU-1P-grW" firstAttribute="top" secondItem="T7R-9K-hEp" secondAttribute="bottom" constant="43" id="SYB-3G-31q"/>
+                            <constraint firstItem="6ZD-x1-Pub" firstAttribute="leading" secondItem="pxT-ta-CNK" secondAttribute="leading" constant="73" id="YSx-as-r2D"/>
+                            <constraint firstItem="Sf5-9E-IOB" firstAttribute="bottom" secondItem="6ZD-x1-Pub" secondAttribute="bottom" constant="125" id="h55-uP-aKA"/>
+                            <constraint firstItem="6ZD-x1-Pub" firstAttribute="centerX" secondItem="pxT-ta-CNK" secondAttribute="centerX" id="pce-dS-EWp"/>
+                            <constraint firstItem="8lU-1P-grW" firstAttribute="centerX" secondItem="6ZD-x1-Pub" secondAttribute="centerX" id="t6t-Gm-ppM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Babyphone" id="6Gf-PM-yrw">
@@ -66,6 +74,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="outputLabel" destination="8lU-1P-grW" id="dBx-aP-sSu"/>
+                        <outlet property="phoneNumberField" destination="6ZD-x1-Pub" id="11Q-df-uAG"/>
+                        <outlet property="startButton" destination="T7R-9K-hEp" id="nIs-IY-tf8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lQ-D7-YwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -84,24 +94,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+41 79 665 26 06" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="LeX-eD-pUK">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+41 79 665 26 06" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="LeX-eD-pUK">
                                 <rect key="frame" x="26" y="168" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myR-pt-qMm">
-                                <rect key="frame" x="218" y="130" width="34" height="30"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rufnummer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTS-Th-Ptr">
+                                <rect key="frame" x="26" y="139" width="90" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="save:" destination="p4z-Ze-HAD" eventType="touchDown" id="apS-Cn-5mc"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="LeX-eD-pUK" secondAttribute="trailing" constant="14" id="DLC-vs-kjr"/>
+                            <constraint firstItem="CTS-Th-Ptr" firstAttribute="top" secondItem="O95-L9-qeD" secondAttribute="bottom" constant="75" id="Gge-P1-KHQ"/>
+                            <constraint firstItem="LeX-eD-pUK" firstAttribute="leading" secondItem="CTS-Th-Ptr" secondAttribute="leading" id="URZ-Xr-mZY"/>
+                            <constraint firstItem="LeX-eD-pUK" firstAttribute="top" secondItem="CTS-Th-Ptr" secondAttribute="bottom" constant="8" symbolic="YES" id="pzC-bJ-e97"/>
+                            <constraint firstItem="CTS-Th-Ptr" firstAttribute="leading" secondItem="wFl-0n-uDN" secondAttribute="leading" constant="26" id="wUo-c7-Hy7"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="52c-HN-UE5"/>
