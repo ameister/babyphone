@@ -25,10 +25,14 @@
 
 @property (readonly) AudioComponentInstance audioUnit;
 @property (readonly) AudioBuffer tempBuffer;
+@property id listener;
 
 - (void) start;
 - (void) stop;
 - (void) processAudio: (AudioBufferList*) bufferList;
+
+
+@property float threshold;
 
 @end
 

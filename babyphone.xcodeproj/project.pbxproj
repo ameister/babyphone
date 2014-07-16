@@ -40,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D8369F4B1976976900088AD5 /* Listener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listener.h; sourceTree = "<group>"; };
 		D881772219377933005D4C18 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D881772619377952005D4C18 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		D881772819378C92005D4C18 /* IosAudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IosAudioController.h; sourceTree = "<group>"; };
@@ -97,6 +98,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D8369F48197696C600088AD5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D89E0CDA192E0FA8008D36CC /* MainViewController.h */,
+				D89E0CDB192E0FA8008D36CC /* MainViewController.m */,
+				D89DAA3B192E868D00288B67 /* SettingsViewController.h */,
+				D89DAA3C192E868D00288B67 /* SettingsViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D8369F49197696E300088AD5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D8DCD0E11950826700F3C24C /* NetworkAdapter.h */,
+				D8DCD0E21950826700F3C24C /* NetworkAdapter.m */,
+				D881772819378C92005D4C18 /* IosAudioController.h */,
+				D881772919378C92005D4C18 /* IosAudioController.m */,
+				D8369F4B1976976900088AD5 /* Listener.h */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		D8369F4A1976970700088AD5 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				D89DAA38192E2BDB00288B67 /* PhoneNumberRepository.h */,
+				D89DAA39192E2BDB00288B67 /* PhoneNumberRepository.m */,
+			);
+			name = Repository;
+			sourceTree = "<group>";
+		};
 		D8E90007192DD9F200A07E07 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,20 +155,13 @@
 		D8E9000F192DD9F200A07E07 /* babyphone */ = {
 			isa = PBXGroup;
 			children = (
-				D881772819378C92005D4C18 /* IosAudioController.h */,
-				D881772919378C92005D4C18 /* IosAudioController.m */,
+				D8369F49197696E300088AD5 /* Utils */,
 				D8E90018192DD9F200A07E07 /* BabyAppDelegate.h */,
 				D8E90019192DD9F200A07E07 /* BabyAppDelegate.m */,
 				D8E9001B192DD9F200A07E07 /* Images.xcassets */,
 				D8E90010192DD9F200A07E07 /* Supporting Files */,
-				D89E0CDA192E0FA8008D36CC /* MainViewController.h */,
-				D89E0CDB192E0FA8008D36CC /* MainViewController.m */,
-				D89DAA38192E2BDB00288B67 /* PhoneNumberRepository.h */,
-				D89DAA39192E2BDB00288B67 /* PhoneNumberRepository.m */,
-				D89DAA3B192E868D00288B67 /* SettingsViewController.h */,
-				D89DAA3C192E868D00288B67 /* SettingsViewController.m */,
-				D8DCD0E11950826700F3C24C /* NetworkAdapter.h */,
-				D8DCD0E21950826700F3C24C /* NetworkAdapter.m */,
+				D8369F48197696C600088AD5 /* Controller */,
+				D8369F4A1976970700088AD5 /* Repository */,
 			);
 			path = babyphone;
 			sourceTree = "<group>";

@@ -8,14 +8,22 @@
 
 #import "SettingsViewController.h"
 #import "PhoneNumberRepository.h"
+#import "IosAudioController.h"
 
 @implementation SettingsViewController
 @synthesize phone;
+@synthesize treshholdSlider;
+
+- (void) viewDidLoad {
+    treshholdSlider.minimumValue = 0.5;
+    treshholdSlider.maximumValue = 2;
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     PhoneNumberRepository *repo = [[PhoneNumberRepository alloc] init];
     [repo loadNumber];
     self.phone.text = repo.phoneNumber;
+    treshholdSlider.value = iosAudio.threshold;
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -29,4 +37,9 @@
     
 }
 
+- (IBAction)valueChanged:(id)sender {
+    UISlider *slider = (UISlider *)sender;
+    float sliderValue = slider.value;
+    iosAudio.threshold = sliderValue;
+}
 @end

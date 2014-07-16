@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsViewController : UIViewController
+- (IBAction)valueChanged:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UISlider *treshholdSlider;
 
 @property (weak, nonatomic) IBOutlet UITextField *phone;
 

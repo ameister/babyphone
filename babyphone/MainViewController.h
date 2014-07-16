@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Listener.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <Listener>
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberField;
 @property (weak, nonatomic) IBOutlet UILabel *outputLabel;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) NSTimer *volTimer;
+@property (weak, nonatomic) IBOutlet UIProgressView *volumeIndicator;
 
 
 - (IBAction)start:(id)sender;

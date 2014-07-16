@@ -8,117 +8,14 @@
 
 #import "IosAudioController.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "Listener.h"
 
 #define kOutputBus 0
 #define kInputBus 1
 
-void checkStatus(int status){
-	if (status) {
-		printf("Status not 0! %d\n", status);
-//		exit(1);
-	}
-}
-
-/**
- This callback is called when new audio data from the microphone is
- available.
- */
-static OSStatus recordingCallback(void *inRefCon, 
-                                  AudioUnitRenderActionFlags *ioActionFlags, 
-                                  const AudioTimeStamp *inTimeStamp, 
-                                  UInt32 inBusNumber, 
-                                  UInt32 inNumberFrames, 
-                                  AudioBufferList *ioData) {
-	
-	// Because of the way our audio format (setup below) is chosen:
-	// we only need 1 buffer, since it is mono
-	// Samples are 16 bits = 2 bytes.
-	// 1 frame includes only 1 sample
-	
-	AudioBuffer buffer;
-	
-	buffer.mNumberChannels = 1;
-	buffer.mDataByteSize = inNumberFrames * 2;
-	buffer.mData = malloc( inNumberFrames * 2 );
-	
-	// Put buffer in a AudioBufferList
-	AudioBufferList bufferList;
-	bufferList.mNumberBuffers = 1;
-	bufferList.mBuffers[0] = buffer;
-	
-    // Then:
-    // Obtain recorded samples
-	
-    OSStatus status;
-	
-    status = AudioUnitRender([iosAudio audioUnit], 
-                             ioActionFlags, 
-                             inTimeStamp, 
-                             inBusNumber, 
-                             inNumberFrames, 
-                             &bufferList);
-	checkStatus(status);
-	
-    // Now, we have the samples we just read sitting in buffers in bufferList
-	// Process the new data
-	[iosAudio processAudio:&bufferList];
-    int32_t* samples = (int32_t*)(buffer.mData); //cast to something usable
-    for (int i = 0; i < buffer.mDataByteSize; i++) {
-        
-            int32_t sound = *(samples+i);
-            if (sound > 2036490594) {
-                NSLog(@"%d", sound);
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0796652606"]];
-            }
-        
-        
-    }
-	
-	// release the malloc'ed data in the buffer we created earlier
-	free(bufferList.mBuffers[0].mData);
-	
-    return noErr;
-}
-
-/**
- This callback is called when the audioUnit needs new data to play through the
- speakers. If you don't have any, just don't write anything in the buffers
- */
-static OSStatus playbackCallback(void *inRefCon, 
-								 AudioUnitRenderActionFlags *ioActionFlags, 
-								 const AudioTimeStamp *inTimeStamp, 
-								 UInt32 inBusNumber, 
-								 UInt32 inNumberFrames, 
-								 AudioBufferList *ioData) {    
-    // Notes: ioData contains buffers (may be more than one!)
-    // Fill them up as much as you can. Remember to set the size value in each buffer to match how
-    // much data is in the buffer.
-	
-	for (int i=0; i < ioData->mNumberBuffers; i++) { // in practice we will only ever have 1 buffer, since audio format is mono
-		AudioBuffer buffer = ioData->mBuffers[i];
-		
-//		NSLog(@"  Buffer %d has %d channels and wants %d bytes of data.", i, buffer.mNumberChannels, buffer.mDataByteSize);
-		
-		// copy temporary buffer data to output buffer
-		UInt32 size = min(buffer.mDataByteSize, [iosAudio tempBuffer].mDataByteSize); // dont copy more data then we have, or then fits
-		memcpy(buffer.mData, [iosAudio tempBuffer].mData, size);
-		buffer.mDataByteSize = size; // indicate how much data we wrote in the buffer
-		
-		// uncomment to hear random noise
-		
-		/*UInt16 *frameBuffer = buffer.mData;
-		for (int j = 0; j < inNumberFrames; j++) {
-			frameBuffer[j] = rand();
-		}*/
-		
-	}
-	
-    return noErr;
-}
-
 @implementation IosAudioController
 
-@synthesize audioUnit, tempBuffer;
+@synthesize audioUnit, tempBuffer, threshold;
 
 /**
  Initialize the audioUnit and allocate our own temporary buffer.
@@ -235,6 +132,114 @@ static OSStatus playbackCallback(void *inRefCon,
 	checkStatus(status);
 	
 	return self;
+}
+
+void checkStatus(int status){
+	if (status) {
+		printf("Status not 0! %d\n", status);
+        //		exit(1);
+	}
+}
+
+/**
+ This callback is called when new audio data from the microphone is
+ available.
+ */
+OSStatus recordingCallback(void *inRefCon,
+                           AudioUnitRenderActionFlags *ioActionFlags,
+                           const AudioTimeStamp *inTimeStamp,
+                           UInt32 inBusNumber,
+                           UInt32 inNumberFrames,
+                           AudioBufferList *ioData) {
+	
+	// Because of the way our audio format (setup below) is chosen:
+	// we only need 1 buffer, since it is mono
+	// Samples are 16 bits = 2 bytes.
+	// 1 frame includes only 1 sample
+	
+	AudioBuffer buffer;
+	
+	buffer.mNumberChannels = 1;
+	buffer.mDataByteSize = inNumberFrames * 2;
+	buffer.mData = malloc( inNumberFrames * 2 );
+	
+	// Put buffer in a AudioBufferList
+	AudioBufferList bufferList;
+	bufferList.mNumberBuffers = 1;
+	bufferList.mBuffers[0] = buffer;
+	
+    // Then:
+    // Obtain recorded samples
+	
+    OSStatus status;
+	
+    status = AudioUnitRender([iosAudio audioUnit],
+                             ioActionFlags,
+                             inTimeStamp,
+                             inBusNumber,
+                             inNumberFrames,
+                             &bufferList);
+	checkStatus(status);
+	
+    // Now, we have the samples we just read sitting in buffers in bufferList
+	// Process the new data
+	[iosAudio processAudio:&bufferList];
+    SInt16* samples = (SInt16*)(buffer.mData); //cast to something usable
+    double sound = 0.0;
+    for (int i = 0; i < buffer.mDataByteSize; i++) {
+        sound = sound + pow(*(samples+i), 2);
+    }
+    
+    double rmsAmp = 0;
+    
+    if(buffer.mDataByteSize > 0) {
+        rmsAmp = sqrt(sound/((double)buffer.mDataByteSize));
+        AudioListener *listener = (AudioListener *) iosAudio.listener;
+        [listener handleAction: rmsAmp ];
+    }
+    //NSLog(@"%f", rmsAmp);
+        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0796652606"]];
+	
+	// release the malloc'ed data in the buffer we created earlier
+	free(bufferList.mBuffers[0].mData);
+	
+    return noErr;
+}
+
+/**
+ This callback is called when the audioUnit needs new data to play through the
+ speakers. If you don't have any, just don't write anything in the buffers
+ */
+OSStatus playbackCallback(void *inRefCon,
+                          AudioUnitRenderActionFlags *ioActionFlags,
+                          const AudioTimeStamp *inTimeStamp,
+                          UInt32 inBusNumber,
+                          UInt32 inNumberFrames,
+                          AudioBufferList *ioData) {
+    // Notes: ioData contains buffers (may be more than one!)
+    // Fill them up as much as you can. Remember to set the size value in each buffer to match how
+    // much data is in the buffer.
+	
+	for (int i=0; i < ioData->mNumberBuffers; i++) { // in practice we will only ever have 1 buffer, since audio format is mono
+		AudioBuffer buffer = ioData->mBuffers[i];
+		
+        //		NSLog(@"  Buffer %d has %d channels and wants %d bytes of data.", i, buffer.mNumberChannels, buffer.mDataByteSize);
+		
+		// copy temporary buffer data to output buffer
+		UInt32 size = min(buffer.mDataByteSize, [iosAudio tempBuffer].mDataByteSize); // dont copy more data then we have, or then fits
+		memcpy(buffer.mData, [iosAudio tempBuffer].mData, size);
+		buffer.mDataByteSize = size; // indicate how much data we wrote in the buffer
+		
+		// uncomment to hear random noise
+		
+		/*UInt16 *frameBuffer = buffer.mData;
+         for (int j = 0; j < inNumberFrames; j++) {
+         frameBuffer[j] = rand();
+         }*/
+		
+	}
+	
+    return noErr;
 }
 
 /**

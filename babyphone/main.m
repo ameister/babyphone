@@ -14,6 +14,7 @@
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
+        iosAudio.threshold = 1;
         iosAudio = [[IosAudioController alloc] init];
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([BabyAppDelegate class]));
     }
