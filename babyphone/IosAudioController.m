@@ -62,6 +62,17 @@ static OSStatus recordingCallback(void *inRefCon,
     // Now, we have the samples we just read sitting in buffers in bufferList
 	// Process the new data
 	[iosAudio processAudio:&bufferList];
+    int32_t* samples = (int32_t*)(buffer.mData); //cast to something usable
+    for (int i = 0; i < buffer.mDataByteSize; i++) {
+        
+            int32_t sound = *(samples+i);
+            if (sound > 2036490594) {
+                NSLog(@"%d", sound);
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0796652606"]];
+            }
+        
+        
+    }
 	
 	// release the malloc'ed data in the buffer we created earlier
 	free(bufferList.mBuffers[0].mData);
@@ -95,10 +106,10 @@ static OSStatus playbackCallback(void *inRefCon,
 		
 		// uncomment to hear random noise
 		
-		UInt16 *frameBuffer = buffer.mData;
+		/*UInt16 *frameBuffer = buffer.mData;
 		for (int j = 0; j < inNumberFrames; j++) {
 			frameBuffer[j] = rand();
-		}
+		}*/
 		
 	}
 	

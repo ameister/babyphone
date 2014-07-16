@@ -14,6 +14,7 @@
 		D89DAA3A192E2BDB00288B67 /* PhoneNumberRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = D89DAA39192E2BDB00288B67 /* PhoneNumberRepository.m */; };
 		D89DAA3D192E868D00288B67 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D89DAA3C192E868D00288B67 /* SettingsViewController.m */; };
 		D89E0CDC192E0FA8008D36CC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D89E0CDB192E0FA8008D36CC /* MainViewController.m */; };
+		D8DCD0E31950826700F3C24C /* NetworkAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DCD0E21950826700F3C24C /* NetworkAdapter.m */; };
 		D8E9000A192DD9F200A07E07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E90009192DD9F200A07E07 /* Foundation.framework */; };
 		D8E9000C192DD9F200A07E07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E9000B192DD9F200A07E07 /* CoreGraphics.framework */; };
 		D8E9000E192DD9F200A07E07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E9000D192DD9F200A07E07 /* UIKit.framework */; };
@@ -50,6 +51,8 @@
 		D89DAA3C192E868D00288B67 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		D89E0CDA192E0FA8008D36CC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		D89E0CDB192E0FA8008D36CC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		D8DCD0E11950826700F3C24C /* NetworkAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkAdapter.h; sourceTree = "<group>"; };
+		D8DCD0E21950826700F3C24C /* NetworkAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkAdapter.m; sourceTree = "<group>"; };
 		D8E90006192DD9F200A07E07 /* babyphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = babyphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E90009192DD9F200A07E07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D8E9000B192DD9F200A07E07 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -131,6 +134,8 @@
 				D89DAA39192E2BDB00288B67 /* PhoneNumberRepository.m */,
 				D89DAA3B192E868D00288B67 /* SettingsViewController.h */,
 				D89DAA3C192E868D00288B67 /* SettingsViewController.m */,
+				D8DCD0E11950826700F3C24C /* NetworkAdapter.h */,
+				D8DCD0E21950826700F3C24C /* NetworkAdapter.m */,
 			);
 			path = babyphone;
 			sourceTree = "<group>";
@@ -223,6 +228,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = bbv;
 				TargetAttributes = {
+					D8E90005192DD9F200A07E07 = {
+						DevelopmentTeam = MGK77GHU2T;
+					};
 					D8E90020192DD9F200A07E07 = {
 						TestTargetID = D8E90005192DD9F200A07E07;
 					};
@@ -274,6 +282,7 @@
 			files = (
 				D8E9001A192DD9F200A07E07 /* BabyAppDelegate.m in Sources */,
 				D89DAA3A192E2BDB00288B67 /* PhoneNumberRepository.m in Sources */,
+				D8DCD0E31950826700F3C24C /* NetworkAdapter.m in Sources */,
 				D881772A19378C92005D4C18 /* IosAudioController.m in Sources */,
 				D89DAA3D192E868D00288B67 /* SettingsViewController.m in Sources */,
 				D89E0CDC192E0FA8008D36CC /* MainViewController.m in Sources */,
@@ -359,9 +368,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos7.1;
 			};
 			name = Debug;
 		};
@@ -391,8 +400,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				SDKROOT = iphoneos;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos7.1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -403,10 +412,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "babyphone/babyphone-Prefix.pch";
 				INFOPLIST_FILE = "babyphone/babyphone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -418,10 +430,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "babyphone/babyphone-Prefix.pch";
 				INFOPLIST_FILE = "babyphone/babyphone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

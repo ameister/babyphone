@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "PhoneNumberRepository.h"
+#import "NetworkAdapter.h"
 
 @interface babyphoneTests : XCTestCase
 
@@ -27,7 +28,7 @@
     [super tearDown];
 }
 
-- (void)phoneNumber_save_numberCanBeLoaded
+- (void)testPhoneNumber_save_numberCanBeLoaded
 {
     PhoneNumberRepository *repo = [[PhoneNumberRepository alloc] init];
     repo.phoneNumber = @"0796652606";
@@ -35,6 +36,13 @@
     repo.phoneNumber = nil;
     [repo loadNumber];
     XCTAssertEqualObjects(@"0796652606", repo.phoneNumber);
+}
+
+- (void) testString_sendOverWLAN_success
+{
+    NetworkAdapter *adapter = [[NetworkAdapter alloc] init];
+    
+    [adapter sendMessage:@"hello" withParam:@"10.0.1.13"];
 }
 
 @end

@@ -34,7 +34,7 @@ bool start = YES;
     
     start = !start;
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0796652606"]];
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0796652606"]];
 
 }
 @end
